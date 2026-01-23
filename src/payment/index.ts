@@ -1,5 +1,5 @@
-import { DomainEvent } from "@/domain-event"
-import { CancellationReason } from "@/order"
+import { DomainEvent } from "../domain-event"
+import { CancellationReason } from "../order"
 
 export interface PaymentDeductedPayload {
   type: "PAYMENT_DEDUCTION_COMPLETED"
