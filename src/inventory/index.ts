@@ -1,3 +1,4 @@
+import { CancellationReason } from "@/order";
 import { DomainEvent } from "../domain-event";
 
 export enum ReservationStatus {
@@ -18,7 +19,7 @@ export interface InventoryReservedPayload {
 export interface InventoryUnavailablePayload {
   orderId: string;
   type: "INVENTORY_RESERVATION_FAILED";
-  reason: string;
+  reason: CancellationReason;
   unavailableItems?: {
     itemId: string;
   }[];
