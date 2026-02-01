@@ -15,14 +15,14 @@ export interface PaymentDeductionFailedPayload {
 export type PaymentDeductedCompletedEvent = DomainEvent<
   PaymentDeductedPayload,
   "Payment",
-  "PAYMENT_DEDUCTED"
+  "PAYMENT_DEDUCTION_COMPLETED"
 >
 
 export type PaymentDeductedFailedEvent =
   DomainEvent<
     PaymentDeductionFailedPayload,
     "Payment",
-    "PAYMENT_DEDUCTED_FAILED"
+    "PAYMENT_DEDUCTION_FAILED"
   >
 
 
