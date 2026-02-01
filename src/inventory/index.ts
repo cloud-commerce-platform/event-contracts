@@ -2,11 +2,11 @@ import { CancellationReason } from "@/order";
 import { DomainEvent } from "../domain-event";
 
 export enum ReservationStatus {
-	PENDING = "PENDING",
-	RESERVED = "RESERVED",
-	CONFIRMED = "CONFIRMED",
-	CANCELLED = "CANCELLED",
-	EXPIRED = "EXPIRED",
+  PENDING = "PENDING",
+  RESERVED = "RESERVED",
+  CONFIRMED = "CONFIRMED",
+  CANCELLED = "CANCELLED",
+  EXPIRED = "EXPIRED",
 }
 
 export interface InventoryReservedPayload {
@@ -28,13 +28,13 @@ export interface InventoryUnavailablePayload {
 export type InventoryReservedEvent = DomainEvent<
   InventoryReservedPayload,
   "Inventory",
-  "INVENTORY_RESERVED"
+  "INVENTORY_RESERVATION_COMPLETED"
 >;
 
 export type InventoryUnavailableEvent = DomainEvent<
   InventoryUnavailablePayload,
   "Inventory",
-  "INVENTORY_UNAVAILABLE"
+  "INVENTORY_RESERVATION_FAILED"
 >;
 
 export type InventoryDomainEvent = InventoryReservedEvent | InventoryUnavailableEvent;
