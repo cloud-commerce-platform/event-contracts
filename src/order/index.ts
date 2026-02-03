@@ -43,7 +43,7 @@ export interface OrderConfirmedPayload {
 export interface OrderCancelledPayload {
   orderId: string;
   cancelledAt: Date;
-  reason: string;
+  reason: CancellationReason[];
   cancelledBy: "customer" | "admin" | "system";
   previousStatus: OrderStatus;
   requiresRefund: boolean;
@@ -58,13 +58,13 @@ export interface OrderCompletedPayload {
 
 export interface PaymentVerificationFailedPayload {
   orderId: string;
-  reason: string;
+  reason: CancellationReason;
   failedAt: Date
 }
 
 export interface OrderInventoryReservationFailedPayload {
   orderId: string;
-  reason: string
+  reason: CancellationReason
   failedAt: Date
 }
 
