@@ -58,13 +58,13 @@ export interface OrderCompletedPayload {
 
 export interface PaymentVerificationFailedPayload {
   orderId: string;
-  reason: CancellationReason.PAYMENT_FAILED;
+  reason: string;
   failedAt: Date
 }
 
 export interface OrderInventoryReservationFailedPayload {
   orderId: string;
-  reason: CancellationReason.INVENTORY_UNAVAILABLE
+  reason: string
   failedAt: Date
 }
 
