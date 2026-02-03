@@ -78,11 +78,11 @@ export interface OrderPaymentRollbackPayload {
 
 export interface OrderInventoryReservationCompletedPayload {
   orderId: string,
-  competedAt: Date
+  completedAt: Date
 }
 export interface OrderPaymentDeductionCompletedPayload {
   orderId: string,
-  competedAt: Date
+  completedAt: Date
 }
 
 export type OrderCreatedEvent = DomainEvent<
