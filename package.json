@@ -1,6 +1,6 @@
 {
   "name": "@alejotamayo28/event-contracts",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Centralized TypeScript interfaces and contract for messaging-service communication across microservices",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
