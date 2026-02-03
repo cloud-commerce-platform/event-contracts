@@ -59,15 +59,13 @@ export interface OrderCompletedPayload {
 export interface PaymentVerificationFailedPayload {
   orderId: string;
   reason: CancellationReason.PAYMENT_FAILED;
-  details: string;
+  failedAt: Date
 }
 
 export interface OrderInventoryReservationFailedPayload {
   orderId: string;
-  reason:
-  | CancellationReason.INVENTORY_UNAVAILABLE
-  | CancellationReason.INVENTORY_UNAVAILABLE;
-  unavailableItems: { itemId: string }[];
+  reason: CancellationReason.INVENTORY_UNAVAILABLE
+  failedAt: Date
 }
 
 export interface OrderInventoryRollbackPayload {
@@ -76,6 +74,15 @@ export interface OrderInventoryRollbackPayload {
 
 export interface OrderPaymentRollbackPayload {
   orderId: string
+}
+
+export interface OrderInventoryReservationCompletedPayload {
+  orderId: string,
+  competedAt: Date
+}
+export interface OrderPaymentDeductionCompletedPayload {
+  orderId: string,
+  competedAt: Date
 }
 
 export type OrderCreatedEvent = DomainEvent<
@@ -126,6 +133,18 @@ export type OrderPaymentRollbackEvent = DomainEvent<
   "ORDER_PAYMENT_ROLLBACK_REQUESTED"
 >
 
+export type OrderPaymentDeductionCompletedEvent = DomainEvent<
+  OrderPaymentDeductionCompletedPayload,
+  "Order",
+  "ORDER_PAYMENT_DEDUCTION_COMPLETED"
+>
+
+export type OrderInventoryReservationCompletedEvent = DomainEvent<
+  OrderInventoryReservationCompletedPayload,
+  "Order",
+  "ORDER_INVENTORY_RESERVATION_COMPLETED"
+>
+
 
 export type OrderDomainEvent =
   | OrderCreatedEvent
@@ -136,5 +155,7 @@ export type OrderDomainEvent =
   | OrderInventoryReservationFailedEvent
   | OrderInventoryRollbackEvent
   | OrderPaymentRollbackEvent
+  | OrderPaymentDeductionCompletedEvent
+  | OrderInventoryReservationCompletedEvent
 
 export type OrderServiceEmittedEvents = OrderDomainEvent;
