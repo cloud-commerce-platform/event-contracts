@@ -13,6 +13,8 @@ export enum OrderStatus {
   CONFIRMED = "CONFIRMED",
   COMPLETED = "COMPLETED",
   CANCELLED = "CANCELLED",
+  COMPENSATION_PENDING = "COMPENSATION_PENDING",
+  COMPENSATED = "COMPENSATED"
 }
 
 export enum CancellationReason {
@@ -85,6 +87,10 @@ export interface OrderPaymentDeductionCompletedPayload {
   completedAt: Date
 }
 
+export interface OrderCompensationPayload {
+  orderId: string
+}
+
 export type OrderCreatedEvent = DomainEvent<
   OrderCreatedPayload,
   "Order",
@@ -145,6 +151,12 @@ export type OrderInventoryReservationCompletedEvent = DomainEvent<
   "ORDER_INVENTORY_RESERVATION_COMPLETED"
 >
 
+export type OrderCompensationEvent = DomainEvent<
+  OrderCompensationPayload,
+  "Order",
+  "ORDER_COMPENSATION_STARTED"
+>
+
 
 export type OrderDomainEvent =
   | OrderCreatedEvent
@@ -157,5 +169,6 @@ export type OrderDomainEvent =
   | OrderPaymentRollbackEvent
   | OrderPaymentDeductionCompletedEvent
   | OrderInventoryReservationCompletedEvent
+  | OrderCompensationEvent
 
 export type OrderServiceEmittedEvents = OrderDomainEvent;
